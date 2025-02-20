@@ -85,7 +85,6 @@ public class PestoqueServiceImp implements PestoqueService {
                 produtosEstoque.setValorTotal(produtosEstoque.getValorTotal());
                 produtosEstoque.setFornecedor(pestoqueRequest.fornecedor());
                 produtosEstoque.setDataCompra(pestoqueRequest.dataCompra());
-
                 if (produtoSituacao.equalsIgnoreCase("vendido")){
                    int valorAtual=produtosEstoque.getQtdEstoque().intValue();
                    int quantidadeVendida=produtosVenda.getQtdVendida();

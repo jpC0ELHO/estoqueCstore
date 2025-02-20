@@ -13,7 +13,7 @@ import java.util.UUID;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 @JsonPropertyOrder({"uuid","sku","nomePorduto","valorVenda"
         ,"impostoEntrega","valorTotal","cliente","localEntrega","localVenda"
-        ,"dataVenda","dataEntrega","parcelado","situacao","parcelas"
+        ,"dataVenda","dataEntrega","parcelado","situacao","parcelas","qtdVendida"
         ,"createdBy","lastModifiedBy","createdAt","updateAt"})
 public record PvendaResponse(
         UUID uuid,
@@ -30,6 +30,7 @@ public record PvendaResponse(
         Boolean parcelado,
         String situacao,
         Integer parcelas,
+        Integer qtdVendida,
         String createdBy,
         String lastModifiedBy,
         LocalDateTime createdAt,
@@ -54,6 +55,7 @@ public record PvendaResponse(
             produtosVenda.getParcelado(),
             produtosVenda.getSituacao(),
             produtosVenda.getParcelas(),
+            produtosVenda.getQtdVendida(),
             produtosVenda.getCreatedBy(),
             produtosVenda.getLastModifiedBy(),
             produtosVenda.getCreatedAt(),

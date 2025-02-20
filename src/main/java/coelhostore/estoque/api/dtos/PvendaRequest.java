@@ -36,7 +36,10 @@ public record PvendaRequest(
         @NotBlank
         String situacao,
         @NotNull
-        Integer parcelas
+        Integer parcelas,
+        @NotNull
+        Integer qtdVendida
+
 ) {
         public static ProdutosVenda toEntidade(PvendaRequest pVendaRequest){
                 if (pVendaRequest==null){
@@ -55,7 +58,8 @@ public record PvendaRequest(
                         pVendaRequest.dataEntrega(),
                         pVendaRequest.parcelado(),
                         pVendaRequest.situacao(),
-                        pVendaRequest.parcelas()
+                        pVendaRequest.parcelas(),
+                        pVendaRequest.qtdVendida()
                 );
         }
 }
