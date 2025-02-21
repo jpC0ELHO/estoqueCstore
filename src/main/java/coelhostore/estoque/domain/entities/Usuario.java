@@ -15,6 +15,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Data
@@ -36,6 +37,16 @@ public class Usuario extends Entidade{
     @JsonSerialize(using = DateTimeSerializerBase.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd/MM/yyyy")
     private LocalDate dataNasci;
+    @ElementCollection
+    @CollectionTable(name = "tb_usuario_email",
+            joinColumns = @JoinColumn(name = "tb_usuario", referencedColumnName = "cpf"))
+    @Column(name = "emails", nullable = false)
+    private Set<String> email;
+
+    @Column(nullable = false)
+    @JoinColumn(name = "tb_usuario", referencedColumnName = "cpf")
+    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    private Set<String> telefone;
     @Enumerated
     private BrEstados estado;
     @Column
